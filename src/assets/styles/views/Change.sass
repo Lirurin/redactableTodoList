@@ -1,0 +1,218 @@
+.change
+  min-height: 100vh
+  padding: 52px 0
+  background-color: #000000
+  color: #ffffff
+
+// .change.redacted
+//   padding: 52px 0 92px 0
+
+.change__title
+  margin-top: 0
+
+.change__title-wrap
+  position: relative
+  overflow: hidden
+  margin: 0 5px
+  &::after
+    content: ''
+    position: absolute
+    right: 0
+    top: -50%
+    width: 20px
+    height: 20px
+    background: #00000000 url('../../img/pencil.svg') center right no-repeat
+    background-size: 80%
+    transform: translateY(-50%)
+    transition: top .3s ease
+
+.change__title-wrap.redactable
+  &::after
+    top: 12px
+    transition: top .3s ease
+
+.change__inner
+  display: flex
+  flex-direction: column
+  max-width: 500px
+  width: 100%
+  padding: 15px
+  border: 1px solid #ffffff
+  margin: 0 auto
+
+.change__label
+  position: relative
+  display: flex
+  flex-wrap: nowrap
+  align-items: center
+  padding: 2px
+  margin-bottom: 15px
+  overflow: hidden
+  transition: padding .3s ease
+  &--title
+    padding: 2px
+
+.change__label.redactable
+  padding: 2px 2px 2px 35px
+  transition: padding .3s ease
+
+.change__actions
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  &--top,
+  &--bottom
+    z-index: 20
+    right: 50%
+    position: fixed
+    max-width: 500px
+    width: 100%
+    padding: 5px 15px
+    border: 1px solid #ffffff
+    background-color: #000000
+    transform: translateX(50%)
+  &--top
+    top: 0
+  &--bottom
+    bottom: 0
+
+.change__action, 
+.change__link
+  position: relative
+  padding: 7px 15px
+  border: 1px solid #ffffff
+  border-radius: 5px
+  margin: 5px
+  background-color: #00000000
+  color: #ffffff
+  box-shadow: 0 0 0 #ffffff inset
+  transition: box-shadow .3s ease 
+  &:disabled
+    opacity: 0.5
+  &:active
+    box-shadow: 0 0 10px #ffffff inset
+    transition: box-shadow .3s ease
+  &--delete, &--discard
+    border-color: #ff0000
+    color: #ff0000
+  &--add
+    width: auto
+    margin-bottom: 15px
+  &--discard, &--save
+    width: 47%
+  &--redact
+    background: #00000000 url('../../img/pencil.svg') center center no-repeat
+    background-size: 70%
+  &--back
+    display: block
+    height: 32px
+    &:after, &:before
+      content: ''
+      position: absolute
+      top: 50%
+      left: 7px 
+      display: block
+      width: 15px
+      height: 2px
+      background-color: #ffffff
+    &:after
+      top: 18px
+      transform: rotateZ(30deg)
+    &:before
+      top: 10px
+      transform: rotateZ(-30deg)
+  &--stop
+    background: #00000000
+    &:after, &:before
+      content: ''
+      position: absolute
+      top: 50%
+      right: 50%
+      display: block
+      width: 2px
+      height: 15px
+      background-color: #ffffff
+    &:after
+      transform: translate(50%, -50%) rotate(45deg)
+    &:before
+      transform: translate(50%, -50%) rotate(-45deg)
+
+.change__caption
+  width: 100%
+  
+.change__input
+  width: 100%
+  min-height: 30px
+  padding: 5px 5px 5px 10px 
+  border: 1px solid #ffffff
+  background: #00000000
+  color: #ffffff
+  transition: border .3s ease
+  &::focus
+    border: 1px solid #ffffff
+  &:disabled
+    border: 1px solid #ffffff00
+    transition: border .3s ease
+
+.change__input.padded
+  padding-right: 35px
+  transition: border .3s ease
+
+.change__task-delete
+  position: absolute
+  left: 0
+  height: 30px
+  width: 30px
+  background: url('../../img/bin.svg') center center no-repeat
+  background-size: 70%
+  cursor: pointer
+
+.change__return
+  z-index: 1
+  position: absolute
+  right: 2px
+  display: none
+  width: 30px
+  height: 30px
+  border: 1px solid #ffffff
+  background: url('../../img/undo.svg') center center no-repeat
+  background-size: 65%
+  &--task
+    right: 47px
+
+.change__return.back
+  display: block
+  transform: rotateY(0deg)
+  transition: transform .3s ease
+
+.change__return.forward
+  display: block
+  transform: rotateY(180deg)
+  transition: transform .3s ease
+
+.change__check
+  width: 25px
+  height: 25px
+  margin: 5px 5px 5px 15px
+
+.change__placeholder
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  min-height: 100vh
+
+.change__text
+  display: block
+  margin: 0 auto
+  font-size: 25px
+  text-align: center
+  a 
+    color: #ffffff
+
+@media screen and (max-width: 424px)
+  .change
+    padding: 52px 0 92px 0
+  .change__action 
+    &--discard, &--save
+      width: 100%
